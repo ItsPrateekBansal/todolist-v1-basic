@@ -1,30 +1,33 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
-const app = express();
-app.use(bodyParser.urlencoded({extended:true}));
 var items = [];
+const app = express();
 
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(express.static("public"));
+app.get("/", function(req, res) {
+  var today = new Date();
+  var options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  }
 
-var today = new Date();
-var options = {
-  weekend:'long',
-  weekday:'long',
-  month:'long',
-  day:'numeric'
-}
-app.get("/",function(req,res){
-  res.render('list.ejs',{dayD:today.toLocaleDateString("hi-IN",options),newItem:items});
-})
+  res.render('list', {
+    kindOfday: today.toLocaleDateString("hi-IN", options),
+    newListItem:items,
+  });
+});
 
-app.post("/",function(req,res){
-  var item = req.body.nextTask;
+app.post("/", function(req, res) {
+  var item = req.body.newItem;
   items.push(item);
   res.redirect("/");
 })
 
-
-
 app.listen(3000, (req, res) => {
-  console.log("listening...@3000");
+  console.log("listening... @ PORT 3001");
 });
