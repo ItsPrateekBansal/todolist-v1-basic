@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ToDo List</title>
+  </head>
+  <body>
+    <h1>
+      <%= dayD %>
+    </h1>
+    <ol>
+     <% for(var i = 0 ; i < newItem.length ; i++){  %>
+        <li><em><%=newItem[i]%></em></li>
+    <%  }  %>
+    </ol>
+    <form action="/" method="post">
+      <input type="text" name="nextTask" placeholder="new task" >
+      <button type="submit" name="button">ADD NEW TASK</button>
+    </form>
+  </body>
+</html>
