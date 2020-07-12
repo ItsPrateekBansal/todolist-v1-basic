@@ -9,17 +9,17 @@
 
 <body>
   <div class="box" id='heading'>
-    <h1><%=kindOfday%></h1>
+    <h1><%=listItem%></h1>
   </div>
 
 
   <div class="box">
 
 
-    <%for(var i = 0 ; i < newListItem.length ; i++){%>
+    <%for(var i = 0 ; i < newListItems.length ; i++){%>
       <div class="item">
         <input type="checkbox">
-        <p><%= newListItem[i] %></p>
+        <p><%= newListItems[i] %></p>
       </div>
     <% } %>
 
@@ -29,7 +29,7 @@
 
   <form action="/" method="post">
     <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-    <button type="submit" name="button">+</button>
+    <button type="submit" name="button" value=<%=listType%>>+</button>
   </form>
     </div>
 
